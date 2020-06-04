@@ -1,13 +1,72 @@
+@import "~treeflex/dist/css/treeflex.css";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.tree {
+  text-align: center;
+}
+
+.tree > .root {
+  width: 100%;
+}
+
+.tree > .leftist {
+  display: inline-block;
+}
+
+.tree > .rightist {
+  display: inline-block;
+}
+
+.leftist {
+  background: dodgerblue;
+}
+
+.rightist {
+  background: hotpink;
+}
+
+.input-label input {
+  display: block;
+}
+
+.tf-custom {
+  background: #eeeeee;
+}
+
+.tf-custom ul {
+  display: flex;
+  justify-content: center;
+}
+
+.tf-custom .tf-nc {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: dodgerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
