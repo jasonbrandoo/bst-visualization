@@ -25,35 +25,31 @@ body {
 }
 
 .tree {
-  text-align: center;
-}
-
-.tree > .root {
   width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.tree > .leftist {
-  display: inline-block;
+.tree-data:text {
+  color: red;
 }
 
-.tree > .rightist {
-  display: inline-block;
-}
-
-.leftist {
+.tree-left {
   background: dodgerblue;
+  display: inline-block;
+  width: 10%;
 }
 
-.rightist {
-  background: hotpink;
+.tree-right {
+  background: darkturquoise;
+  display: inline-block;
+  width: 10%;
 }
 
 .input-label input {
   display: block;
-}
-
-.tf-custom {
-  background: #eeeeee;
 }
 
 .tf-custom ul {

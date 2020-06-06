@@ -3,78 +3,61 @@ import { BinarySearchTree } from "./utils/BinarySearchTree";
 
 const bst = new BinarySearchTree();
 
-function Tree({ data, number, left, right }) {
-  console.log({ left, right });
-  if (data) {
-    return Object.entries(data).map(([key, value]) => {
+const Nodes = ({ children }) => {
+  return (
+    <div className="tf-tree tf-custom">
+      <ul>
+        <li>
+          <span className="tf-nc">{children}</span>
+          <ul>
+            <li>
+              <span className="tf-nc">{children}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+const Tree = (props) => {
+  const { data, left, right } = props;
+
+  function renderTree(data) {
+    return Object.entries(data).map(function ([key, value]) {
       if (key === "left" && typeof value === "object") {
         if (value !== null) {
           return (
-            <div
-              className="leftist"
-              key={left + 1}
-              style={{ marginRight: `${left}px` }}
-            >
-              <Tree data={value} left={left + 10} right={0} />
-            </div>
+            <li>
+              <Tree key={left + 1} data={value} left={left + 10} right={0} />
+            </li>
           );
         } else if (value === null) {
-          console.log("null");
+          return null;
         }
       } else if (key === "right" && typeof value === "object") {
         if (value !== null) {
           return (
-            <div
-              className="rightist"
-              key={right + 10}
-              style={{ marginLeft: `${right}px` }}
-            >
-              <Tree data={value} right={right + 1} left={0} />
-            </div>
+            <li>
+              <Tree key={right + 1} data={value} right={right + 1} left={0} />
+            </li>
           );
         } else if (value === null) {
-          console.log("null");
+          return null;
         }
       }
-      return <div className="root">{value}</div>;
-      // if (number < value) {
-      //   if (key === "left" && value === null) {
-      //     console.log("isi kiri");
-      //   }
-      // } else if (number > value) {
-      //   if (key === "kanan" && value === null) {
-      //     console.log("isi kanan");
-      //   }
-      // } else {
-      //   console.log(value);
-      // }
-      // debugger;
-      // if (typeof data[key] === "object" && data[key] !== null) {
-      //   if (key === "left" && data[key] !== null) {
-      //     data = data[key];
-      //     return (
-      //       <div key={left + 1}>
-      //         <Tree data={data} left={left + 1} />
-      //       </div>
-      //     );
-      //   } else if (key === "right" && data[key] !== null) {
-      //     data = data[key];
-      //     return (
-      //       <div key={left + 1}>
-      //         <Tree data={data} right={right + 1} />
-      //       </div>
-      //     );
-      //   } else {
-      //     return data[key];
-      //   }
-      // }
-      // return data[key];
     });
   }
-  return (
-    <div>{data ? <div className="fucker">{data.data}</div> : "fucke"}</div>
+
+  return data ? (
+    <>
+      <span className="tf-nc">{data.data}</span>
+      <ul>{renderTree(data)}</ul>
+    </>
+  ) : (
+    "fucked"
   );
-}
+};
 
 function App() {
   const [number, setNumber] = React.useState(50);
@@ -92,22 +75,7 @@ function App() {
 
   return (
     <div className="container">
-      <button
-        type="button"
-        onClick={() => {
-          bst.add(25);
-          bst.add(20);
-          bst.add(10);
-          bst.add(30);
-          bst.add(110);
-        }}
-      >
-        Debug
-      </button>
       <h1>Binary Search Tree Visualization</h1>
-      <div className="tree">
-        <Tree data={root} number={number} left={10} right={10} />
-      </div>
       <form onSubmit={addNumber}>
         <label htmlFor="number" className="input-label">
           Input Number
@@ -124,42 +92,7 @@ function App() {
       <div className="tf-tree tf-custom">
         <ul>
           <li>
-            <span className="tf-nc">1</span>
-            <ul>
-              <li>
-                <span className="tf-nc">2</span>
-                <ul>
-                  <li>
-                    <span className="tf-nc">4</span>
-                  </li>
-                  <li>
-                    <span className="tf-nc">5</span>
-                    <ul>
-                      <li>
-                        <span className="tf-nc">9</span>
-                      </li>
-                      <li>
-                        <span className="tf-nc">10</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <span className="tf-nc">6</span>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span className="tf-nc">3</span>
-                <ul>
-                  <li>
-                    <span className="tf-nc">7</span>
-                  </li>
-                  <li>
-                    <span className="tf-nc">8</span>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <Tree data={root} parent={bst.root} left={10} right={10} />
           </li>
         </ul>
       </div>
