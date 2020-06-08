@@ -1,32 +1,33 @@
-import React from "react";
-import { BinarySearchTree } from "./utils/BinarySearchTree";
+import React from 'react';
+import { BinarySearchTree } from './utils/BinarySearchTree';
 
 const bst = new BinarySearchTree();
 
 function Tree(props) {
   const { data } = props;
 
-  function renderTree(data) {
-    /* eslint-disable-next-line */
-    return Object.entries(data).map(function ([key, value]) {
-      if (key === "left" && typeof value === "object") {
+  function renderTree(node) {
+    return Object.entries(node).map(function ([key, value]) {
+      if (key === 'left' && typeof value === 'object') {
         if (value !== null) {
           return (
             <li key={value.data}>
               <Tree data={value} />
             </li>
           );
-        } else if (value === null) {
+        }
+        if (value === null) {
           return null;
         }
-      } else if (key === "right" && typeof value === "object") {
+      } else if (key === 'right' && typeof value === 'object') {
         if (value !== null) {
           return (
             <li key={value.data}>
               <Tree data={value} />
             </li>
           );
-        } else if (value === null) {
+        }
+        if (value === null) {
           return null;
         }
       }
@@ -39,7 +40,7 @@ function Tree(props) {
       <ul>{renderTree(data)}</ul>
     </>
   ) : (
-    "EMPTY"
+    'EMPTY'
   );
 }
 
@@ -94,13 +95,7 @@ function App() {
     <div className="container">
       <h1>Binary Search Tree Visualization</h1>
       <form onSubmit={addNumber} className="form-control">
-        <input
-          type="number"
-          min="1"
-          name="add"
-          onChange={changeNumber}
-          required
-        />
+        <input type="number" min="1" name="add" onChange={changeNumber} required />
         <button type="submit" className="input-button">
           Add
         </button>
@@ -109,13 +104,7 @@ function App() {
         </button>
       </form>
       <form onSubmit={removeNumber} className="form-control">
-        <input
-          type="number"
-          min="1"
-          name="remove"
-          onChange={changeNumber}
-          required
-        />
+        <input type="number" min="1" name="remove" onChange={changeNumber} required />
         <button type="submit" className="input-button">
           Remove
         </button>
