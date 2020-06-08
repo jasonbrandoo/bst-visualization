@@ -45,6 +45,9 @@ class BinarySearchTree {
 
   findMin() {
     let current = this.root;
+    if (current === null) {
+      return null;
+    }
     while (current.left !== null) {
       current = current.left;
     }
@@ -61,6 +64,9 @@ class BinarySearchTree {
 
   findMax() {
     let current = this.root;
+    if (current === null) {
+      return null;
+    }
     while (current.right !== null) {
       current = current.right;
     }
@@ -69,7 +75,6 @@ class BinarySearchTree {
 
   remove(data) {
     function removeData(nodes, datas) {
-      debugger;
       if (nodes === null) {
         return null;
       } else if (datas < nodes.data) {

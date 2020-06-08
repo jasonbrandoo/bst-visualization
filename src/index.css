@@ -19,6 +19,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -48,8 +54,23 @@ body {
   width: 10%;
 }
 
-.input-label input {
-  display: block;
+.form-control {
+  margin: 10px 0;
+}
+
+input {
+  width: 100px;
+}
+
+.input-button {
+  margin-left: 1rem;
+  width: 100px;
+}
+
+.find-min-button,
+.find-max-button {
+  margin-left: 1rem;
+  width: 110px;
 }
 
 .tf-custom ul {
@@ -61,8 +82,10 @@ body {
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
+  border: none;
   background: dodgerblue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
