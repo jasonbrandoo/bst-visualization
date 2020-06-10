@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
-[codesandbox]('https://codesandbox.io/s/bst-visualization-q8zkz').
+[codesandbox](https://codesandbox.io/s/bst-visualization-q8zkz).
 
 ## Available Scripts
 
